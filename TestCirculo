@@ -1,0 +1,49 @@
+package circulo;
+import utiles.*;
+/**
+ * Crea una clase TestCirculo que cree una instancia de “Circulo”, muestre su
+ *estado, lo haga crecer 27 veces, averigüe su área, lo haga decrecer 10 veces y
+ *muestre su estado final.
+ * @author Jose Manuel Bravo Martínez
+ * @version 1.0
+ */
+class TestCirculo{
+	public static void main(String[] args){
+		Circulo circulo = new Circulo();
+		establecerRadio(circulo);
+		circulo.mostrarEstado();
+		aumentarRadio(circulo);
+		circulo.mostrarEstado();
+		menguarRadio(circulo);
+		circulo.mostrarEstado();
+	}
+	public static void establecerRadio(Circulo circulo){
+		double radio = pedirDimension();
+		circulo.setRadio(radio);
+	}
+	public static void aumentarRadio(Circulo circulo){
+		int numeroAumentos = 27; //numero de veces que se aumenta el radio
+		System.out.println("Aumentando el radio "+numeroAumentos+" veces...");
+		for(int i=0;i<numeroAumentos;i++){
+			circulo.crecer();
+		}
+	}
+	public static void menguarRadio(Circulo circulo){
+		int numeroDecrementos = 10; //numero de veces que se disminuye el radio
+		System.out.println("Disminuyendo el radio "+numeroDecrementos+" veces...");
+		for(int i=0;i<numeroDecrementos;i++){
+			circulo.menguar();
+		}
+	}
+	private static int pedirDimension(){
+		int dimension;
+		do{
+			dimension = Teclado.leerEntero("Introduce el radio del circulo.");
+			if(dimension<0)
+				System.out.println("Error, el radio de un circulo no puede ser negativo.");
+			
+		}while (dimension<0);
+		
+		return dimension;
+	}
+}
